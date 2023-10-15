@@ -6,7 +6,7 @@
 // Execute `rustlings hint iterators2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
 
 // Step 1.
 // Complete the `capitalize_first` function.
@@ -15,7 +15,14 @@ pub fn capitalize_first(input: &str) -> String {
     let mut c = input.chars();
     match c.next() {
         None => String::new(),
-        Some(first) => ???,
+        Some(first) =>{
+            let up_f = first.to_ascii_uppercase();
+            let mut res = up_f.to_string();
+            for i in c{
+                res.push(i);
+            }
+            res
+        } ,
     }
 }
 
@@ -24,7 +31,23 @@ pub fn capitalize_first(input: &str) -> String {
 // Return a vector of strings.
 // ["hello", "world"] -> ["Hello", "World"]
 pub fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
-    vec![]
+    let mut output = vec![];
+    for word in words.iter(){
+        let mut c1 = word.chars();
+        let mut word_1 = match c1.next() {
+            None =>String::new(),
+            Some(first) =>{
+                let up_f = first.to_ascii_uppercase();
+                let mut res = up_f.to_string();
+                for c in c1{
+                    res.push(c);
+                }
+                res
+            } ,
+        };
+        output.push(word_1)
+    };
+    output
 }
 
 // Step 3.
@@ -32,7 +55,23 @@ pub fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
 // Return a single string.
 // ["hello", " ", "world"] -> "Hello World"
 pub fn capitalize_words_string(words: &[&str]) -> String {
-    String::new()
+    let mut output = String::new();
+    for word in words.iter(){
+        let mut c1 = word.chars();
+        let mut word_1 = match c1.next() {
+            None =>String::new(),
+            Some(first) =>{
+                let up_f = first.to_ascii_uppercase();
+                let mut res = up_f.to_string();
+                for c in c1{
+                    res.push(c);
+                }
+                res
+            } ,
+        };
+         output += &word_1;
+    }
+    output
 }
 
 #[cfg(test)]
